@@ -1,0 +1,14 @@
+Questions for Product Team:
+•	Can a product belong to multiple suppliers?
+•	Can a product be bundled multiple levels deep (nested bundles)?
+•	Do warehouses belong to one company only?
+•	Should inventory changes be tracked with reasons (like sale, return, restock)?
+•	Do suppliers provide to multiple companies?
+
+
+My Design Choices:
+•	Used foreign keys to keep relations strong.
+•	Added UNIQUE on SKU to stop duplicates.
+•	Created inventory_changes table to track stock movements.
+•	Used many-to-many for suppliers and product bundles.
+•	Assumed warehouse belongs to only one company.

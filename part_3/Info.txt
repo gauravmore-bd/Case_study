@@ -1,0 +1,22 @@
+What the API does:
+•	It shows a list of products that are low in stock for a given company.
+•	Only shows products that had recent sales (in last 30 days).
+•	Also shows supplier info so company can reorder.
+
+My Assumptions 
+•	There's a table called product_thresholds that stores the threshold for each product.
+•	A product can have one or more suppliers, but we’re picking one for now.
+•	We assume a sales table tracks product sales with a date.
+•	Days until stockout is hardcoded as 7 for now, because I didn’t calculate actual rate.
+
+Why I Did It Like This:
+•	I broke down the problem step-by-step to make it easier to write and debug.
+•	Used simple queries instead of complex joins to avoid confusion.
+•	It’s slower because of the for loop and multiple DB calls, but it’s easier to understand.
+•	This would be fine for a beginner project or small business, and can be optimized later.
+
+Notes:
+- Currently returning one supplier per product. Later, we can support preferred suppliers.
+- Used loop and multiple simple queries to keep the logic clear and beginner-friendly.
+- This can be optimized later using joins and bulk queries.
+- I focused more on correctness and readability rather than speed, which suits my experience level

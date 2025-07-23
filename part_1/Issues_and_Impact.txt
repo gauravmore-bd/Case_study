@@ -1,0 +1,23 @@
+. Issues Identified
+
+- No check for duplicate SKU (which must be unique)
+- Missing required field checks (name, sku, price, etc.)
+- Not validating input types (like price as decimal, quantity as integer)
+- Commits twice to DB; could be combined
+- No error handling (e.g., try-catch)
+- Logic assumes products are only stored in one warehouse
+- Doesn't support optional fields gracefully
+
+
+. Impact in Production
+
+- Duplicate SKUs may break product search or create confusion
+- API might crash on bad or missing input
+- Data inconsistency if product insert works but inventory fails
+- No meaningful error messages to the frontend/client
+- Fails silently for edge business scenarios like multiple warehouse support
+
+Note:
+- Used db.session.flush() to get the product ID before committing to the database.
+- Committing once after both product and inventory creation ensures consistent data if something fails.
+- Casting price to float helps handle cases where input comes as a string.
